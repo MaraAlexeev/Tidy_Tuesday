@@ -8,13 +8,14 @@ mismanaged_vs_gdp <- readr::read_csv("https://raw.githubusercontent.com/rfordata
 
 waste_vs_gdp <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-05-21/per-capita-plastic-waste-vs-gdp-per-capita.csv")
 
+#clean column names with janitor
 coast_vs_waste_clean <- janitor::clean_names(coast_vs_waste)
 waste_vs_gdp_clean <- janitor::clean_names(waste_vs_gdp)
 mismanaged_vs_gdp_clean <- janitor::clean_names(mismanaged_vs_gdp)
 
 
 
-#plot for waste per capita with size of population as marker
+#plot for waste per capita with size of population as marker, excluding places with NA's
 waste_gdp_2010 <- waste_vs_gdp_clean %>% filter(year == 2010)
 
 waste_gdp_2010_have_data <- waste_gdp_2010 %>% drop_na() 
